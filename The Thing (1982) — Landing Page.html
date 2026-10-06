@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>THE THING (1982) — Trust No One</title>
+<style>
+:root{--bg:#04070a;--ice:#c6e8f7;--dim:#6f8794;--red:#e0102b;--card:#0b1319;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ice);font-family:Georgia,serif;line-height:1.6;overflow-x:hidden}
+canvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+#dark{position:fixed;inset:0;pointer-events:none;z-index:2;background:radial-gradient(circle 260px at var(--x,50%) var(--y,40%),transparent 0,rgba(2,4,6,.55) 60%,rgba(2,4,6,.88) 100%)}
+#hud{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:12px;z-index:5;font:12px monospace;color:var(--red);text-align:right;letter-spacing:.15em;background:#04070acc;padding:6px 10px;border:1px solid #2a0a12}
+section{position:relative;z-index:3;max-width:920px;margin:0 auto;padding:100px 22px}
+.rv{opacity:0;transform:translateY(40px);filter:blur(6px);transition:1s}.rv.on{opacity:1;transform:none;filter:none}
+.tag{font:12px monospace;letter-spacing:.35em;color:var(--red);text-transform:uppercase}
+h1{font:900 clamp(60px,17vw,160px)/.9 Impact,'Arial Black',sans-serif;margin:14px 0;letter-spacing:.04em;position:relative;text-shadow:0 0 40px #3aa0c866;animation:fl 6s infinite}
+h1::before,h1::after{content:attr(data-t);position:absolute;left:0;top:0;width:100%}
+h1::before{color:var(--red);animation:g1 3s infinite steps(1);clip-path:inset(20% 0 55% 0)}
+h1::after{color:#3ad;animation:g2 3.7s infinite steps(1);clip-path:inset(60% 0 10% 0)}
+@keyframes fl{0%,94%,100%{opacity:1}95%{opacity:.3}96%{opacity:1}97%{opacity:.5}}
+@keyframes g1{0%,90%,100%{opacity:0}92%{transform:translate(-8px,2px);opacity:.9}95%{transform:translate(6px,-2px);opacity:.9}}
+@keyframes g2{0%,85%,100%{opacity:0}87%{transform:translate(7px,-2px);opacity:.9}93%{transform:translate(-5px,3px);opacity:.9}}
+h2{font:700 clamp(28px,5vw,44px)/1.1 Impact,'Arial Black',sans-serif;letter-spacing:.06em;margin:8px 0 18px;text-transform:uppercase}
+p{color:#a9c3cf;font-size:18px;max-width:640px}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+#term{font:14px/1.7 monospace;color:#7fe0ae;min-height:90px;white-space:pre-wrap}
+#term i{display:inline-block;width:9px;height:15px;background:#7fe0ae;animation:bl 1s infinite;vertical-align:middle}
+@keyframes bl{50%{opacity:0}}
+.btn{display:inline-block;margin-top:24px;padding:14px 26px;border:1px solid var(--red);color:var(--ice);text-decoration:none;font:13px monospace;letter-spacing:.25em;text-transform:uppercase;background:transparent;cursor:pointer;transition:.3s}
+.btn:hover{background:var(--red);box-shadow:0 0 40px var(--red)}
+.mq{position:relative;z-index:3;overflow:hidden;border-block:1px solid #2a0a12;background:#0a0306;padding:10px 0;white-space:nowrap}
+.mq div{display:inline-block;font:900 22px Impact,sans-serif;letter-spacing:.3em;color:var(--red);animation:mq 22s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+.chips span{border:1px solid #1f3340;padding:6px 14px;font:13px monospace;letter-spacing:.15em;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:22px}
+.card{background:var(--card);border:1px solid #1a2b36;padding:22px;transition:.3s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--red);transform:translateY(-6px) rotate(-.5deg);box-shadow:0 10px 40px #e0102b44}
+.card b{display:block;font-size:22px}.card small{font:12px monospace;color:var(--dim)}
+.num{font:900 56px/1 Impact,sans-serif;color:var(--red)}
+.crew{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:10px;margin-top:20px}
+.m{background:var(--card);border:1px solid #1a2b36;padding:16px 6px;text-align:center;font:13px monospace;letter-spacing:.1em;transition:.4s}
+.m.hot{border-color:var(--red);background:#2a0510;color:#fff;animation:pulse .4s infinite alternate}
+.m.hot::after{content:"⚠ NOT HUMAN";display:block;color:var(--red);font-weight:bold;margin-top:6px}
+.m.safe{border-color:#2a8a5a;color:#7fe0ae}
+@keyframes pulse{to{box-shadow:0 0 30px var(--red);transform:scale(1.06)}}
+#out{font:14px monospace;color:var(--dim);margin-top:14px;min-height:22px}
+.big{font:900 clamp(30px,7vw,64px)/1 Impact,sans-serif;color:var(--red);text-transform:uppercase;margin:10px 0}
+.post{background:#0b1319;border:1px solid #1a2b36;padding:14px;font:13px monospace;color:#a9c3cf}.post b{color:var(--ice)}
+.bar{height:8px;background:#1a2b36;margin-top:6px}.bar i{display:block;height:100%;width:0;background:var(--red);transition:.6s}
+.vote{cursor:pointer;text-align:left;width:100%;color:inherit;font:inherit;background:var(--card);border:1px solid #1a2b36;padding:12px;margin-top:10px}.vote:hover{border-color:var(--red)}
+.shake{animation:sh .5s}@keyframes sh{20%{transform:translate(-8px,4px)}40%{transform:translate(8px,-4px)}60%{transform:translate(-6px,-3px)}80%{transform:translate(6px,3px)}}
+#flash{position:fixed;inset:0;background:var(--red);opacity:0;pointer-events:none;z-index:9;transition:opacity .6s}
+footer{position:relative;z-index:3;text-align:center;padding:50px 20px;color:var(--dim);font:12px monospace;letter-spacing:.2em}
+@media (pointer:coarse){#dark{background:radial-gradient(circle 220px at var(--x,50%) var(--y,40%),transparent 0,rgba(2,4,6,.15) 60%,rgba(2,4,6,.45) 100%)}}
+@media (max-width:480px){#hud{font-size:10px;padding:4px 7px}section{padding:70px 18px}p{font-size:16px}.btn{padding:12px 18px;letter-spacing:.15em}}
+</style></head><body>
+<canvas id="snow"></canvas><div id="dark"></div><div id="flash"></div>
+<div id="hud">TEMP <span id="t">-40</span>°C<br>STATUS: <span id="st">UNKNOWN</span></div>
+
+<section class="hero">
+  <div class="tag">Outpost 31 · Antarctica · 1982</div>
+  <h1 data-t="THE THING">THE THING</h1>
+  <div id="term"></div>
+  <a class="btn" href="#story" style="width:max-content">Enter the station</a>
+</section>
+
+<div class="mq"><div>TRUST NO ONE ✦ MAN IS THE WARMEST PLACE TO HIDE ✦ WHO IS THE THING? ✦ TRUST NO ONE ✦ MAN IS THE WARMEST PLACE TO HIDE ✦ WHO IS THE THING? ✦ TRUST NO ONE ✦ MAN IS THE WARMEST PLACE TO HIDE ✦ WHO IS THE THING? ✦</div></div>
+
+<section class="rv"><div class="tag">Introduction</div><h2>1982. Antarctica. Alone.</h2>
+<p>The Thing is a science-fiction horror movie directed by <b style="color:var(--ice)">John Carpenter</b>. A group of researchers faces a mysterious alien creature, far from any help.</p></section>
+
+<section class="rv"><div class="tag">Genre &amp; Cast</div><h2>Horror · Sci-fi · Thriller</h2>
+<div class="chips"><span>Horror</span><span>Science Fiction</span><span>Thriller</span></div>
+<div class="grid">
+<div class="card"><b>Kurt Russell</b><small>MAIN ACTOR · R.J. MacReady</small></div>
+<div class="card"><b>Keith David</b><small>IMPORTANT CAST</small></div>
+<div class="card"><b>Wilford Brimley</b><small>IMPORTANT CAST</small></div></div></section>
+
+<section id="story" class="rv"><div class="tag">The Story</div><h2>Nobody can be trusted.</h2>
+<p>The scientists discover an alien creature that can imitate any living organism. Nobody knows who they can trust. Tension and fear take over the station.</p>
+<p style="color:var(--ice)">Now you take the blood test. Who is the Thing?</p>
+<div class="crew" id="crew"></div>
+<button class="btn" id="test">🔥 Heat the wire</button><div id="out">Someone here is not who they seem.</div></section>
+
+<section class="rv"><div class="tag">Why did it fail?</div><h2>Too cold for 1982.</h2>
+<p>The Thing was not a success. Many people thought it was too violent and disturbing. It also competed with popular movies, especially <b style="color:var(--ice)">E.T.</b>, and performed poorly at the box office.</p>
+<div class="grid">
+<div class="card"><div class="num">01</div><small>TOO VIOLENT AND DISTURBING</small></div>
+<div class="card"><div class="num">02</div><small>COMPETITION: E.T.</small></div>
+<div class="card"><div class="num">03</div><small>POOR BOX OFFICE</small></div></div></section>
+
+<section class="rv"><div class="tag">The Rebrand</div><h2>Today, we would sell it as</h2>
+<div class="big">Modern psychological horror</div>
+<p>Social media, trailers, and mystery to attract younger audiences. One question drives the whole campaign:</p>
+<div class="big" style="color:var(--ice);text-shadow:0 0 24px var(--red)">“Who is the Thing?”</div>
+<div class="grid">
+<div class="post"><b>@horrorfan</b> · #WhoIsTheThing<br>I counted every scene. It is NOT who you think. 🧊👀</div>
+<div class="post"><b>@cinemaclub</b> · trailer teaser<br>Same room. Same faces. One of them is lying.</div></div>
+<p style="margin-top:28px;color:var(--ice)">Vote like the audience would:</p>
+<div id="poll"></div></section>
+
+<footer>THE THING · 1982 · JOHN CARPENTER · ORAL PRESENTATION</footer>
+
+<script>
+// snow
+(function(){var c=document.getElementById('snow'),x=c.getContext('2d'),f=[],W,H;
+function r(){W=c.width=innerWidth;H=c.height=innerHeight}r();addEventListener('resize',r);
+for(var i=0;i<150;i++)f.push({x:Math.random()*2000,y:Math.random()*1200,s:Math.random()*2+.5,v:Math.random()+.4});
+(function d(){x.clearRect(0,0,W,H);x.fillStyle='rgba(220,240,255,.65)';
+f.forEach(function(p){p.y+=p.v;p.x+=Math.sin(p.y/50)*.6+.5;if(p.y>H){p.y=-5;p.x=Math.random()*W}if(p.x>W)p.x=0;x.beginPath();x.arc(p.x,p.y,p.s,0,6.3);x.fill()});requestAnimationFrame(d)})()})();
+// flashlight
+var D=document.getElementById('dark');
+function mv(e){var p=e.touches?e.touches[0]:e;D.style.setProperty('--x',p.clientX+'px');D.style.setProperty('--y',p.clientY+'px')}
+addEventListener('mousemove',mv);addEventListener('touchmove',mv,{passive:true});
+// typing
+var L='> OUTPOST 31 ... SIGNAL LOST\n> TEMPERATURE: -40°C\n> 1 UNKNOWN LIFEFORM DETECTED\n> WHO IS THE THING?',T=document.getElementById('term'),k=0;
+(function ty(){T.innerHTML=L.slice(0,k)+'<i></i>';if(k++<L.length)setTimeout(ty,45)})();
+// reveal + temperature
+var io=new IntersectionObserver(function(a){a.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on')})},{threshold:.15});
+document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
+var tt=document.getElementById('t');
+addEventListener('scroll',function(){var s=scrollY/(document.body.scrollHeight-innerHeight||1);tt.textContent=Math.round(-40-s*30)});
+// blood test
+var names=['MacReady','Childs','Blair','Bennings','Palmer','Norris','Clark','Copper'],crew=document.getElementById('crew'),out=document.getElementById('out'),els=[],fl=document.getElementById('flash'),st=document.getElementById('st');
+names.forEach(function(n){var d=document.createElement('div');d.className='m';d.textContent=n.toUpperCase();crew.appendChild(d);els.push(d)});
+function scream(){try{var a=new(window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain();o.type='sawtooth';o.frequency.setValueAtTime(900,a.currentTime);o.frequency.exponentialRampToValueAtTime(120,a.currentTime+.6);g.gain.value=.15;o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.6)}catch(e){}}
+var busy=false;
+document.getElementById('test').onclick=function(){if(busy)return;busy=true;
+els.forEach(function(e){e.className='m'});out.textContent='Testing...';st.textContent='TESTING';
+var i=0,bad=Math.floor(Math.random()*els.length);
+(function step(){els[i].className='m '+(i===bad?'hot':'safe');
+if(i===bad){out.textContent=names[bad]+' is the Thing. BURN IT.';st.textContent='INFECTED';scream();fl.style.opacity=.7;setTimeout(function(){fl.style.opacity=0},250);document.body.classList.add('shake');setTimeout(function(){document.body.classList.remove('shake')},500);busy=false;return}
+i++;setTimeout(step,450)})()};
+// poll
+var pv=[3,2,2,1],po=['MacReady','Childs','Blair','Nobody. Trust no one.'],pd=document.getElementById('poll');
+function draw(){var s=pv.reduce(function(a,b){return a+b});pd.innerHTML='';po.forEach(function(n,i){var b=document.createElement('button');b.className='vote';b.innerHTML=n+' — '+Math.round(pv[i]/s*100)+'%<div class="bar"><i style="width:'+pv[i]/s*100+'%"></i></div>';b.onclick=function(){pv[i]++;draw()};pd.appendChild(b)})}draw();
+</script></body></html>
