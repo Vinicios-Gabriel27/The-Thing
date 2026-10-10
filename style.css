@@ -48,3 +48,22 @@ p{color:#a9c3cf;font-size:18px;max-width:640px}
 footer{position:relative;z-index:3;text-align:center;padding:50px 20px;color:var(--dim);font:12px monospace;letter-spacing:.2em}
 @media (pointer:coarse){#dark{background:radial-gradient(circle 220px at var(--x,50%) var(--y,40%),transparent 0,rgba(2,4,6,.15) 60%,rgba(2,4,6,.45) 100%)}}
 @media (max-width:480px){#hud{font-size:10px;padding:4px 7px}section{padding:70px 18px}p{font-size:16px}.btn{padding:12px 18px;letter-spacing:.15em}}
+
+.gif{position:relative;margin:30px 0 0;border:1px solid var(--red);box-shadow:0 0 40px #e0102b33;max-width:640px;overflow:hidden}
+.gif img{display:block;width:100%;height:auto;filter:contrast(1.1) saturate(.8);animation:fl 5s infinite}
+.gif::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.25) 0 1px,transparent 1px 3px);pointer-events:none}
+.gif figcaption{position:absolute;left:10px;bottom:8px;font:11px monospace;color:var(--red);letter-spacing:.2em;z-index:2;text-shadow:0 0 6px #000}
+.gif .ph{display:none}
+.gif.empty{min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;background:var(--card)}
+.gif.empty img{display:none}
+.gif.empty .ph{display:block;font:13px/1.8 monospace;color:var(--dim);letter-spacing:.15em}
+
+.poster{position:absolute;right:22px;bottom:9%;width:190px;margin:0;border:1px solid #1f3340;box-shadow:0 0 50px #3aa0c855;transform:rotate(3deg);transition:.5s;animation:fl 7s infinite}
+.poster:hover{transform:rotate(0) scale(1.06);border-color:var(--red);box-shadow:0 0 50px #e0102b88}
+.poster img{display:block;width:100%;height:auto}
+.specimen{position:relative;margin:26px 0;border:1px solid #1a2b36;overflow:hidden;cursor:crosshair}
+.specimen img{display:block;width:100%;height:auto;filter:grayscale(.7) contrast(1.15) brightness(.75);transition:.6s}
+.specimen:hover img{filter:none;transform:scale(1.04)}
+.specimen::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 60%,#04070a);pointer-events:none}
+.specimen figcaption{position:absolute;left:12px;bottom:10px;z-index:2;font:12px monospace;color:var(--red);letter-spacing:.25em}
+@media (max-width:700px){.poster{position:static;width:150px;margin-top:30px}}
